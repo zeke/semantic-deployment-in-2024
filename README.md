@@ -5,6 +5,11 @@ This is an opinionated workflow for automating away some of the tedium of releas
 The idea is to add a bit of semantic information to each pull request as your write them, then let automation take care of 
 writing changelogs, determining version numbers, and publishing release artifacts to registries like GitHub and npm.
 
+
+## Why?
+
+I maintain [a lot of software packages](https://www.npmjs.com/~zeke). A lot of that maintenance is mindless work, so I always look for opportunities to automate away the mindless parts. When I worked on the [Electron](https://github.com/electron/electron) team at GitHub, we developed this semantic workflow to help manage the influx of community contributions to the project, and to remove the [human subjectivity](https://github.com/dominictarr/sentimental-versioning/blob/master/README.md) from the process of deciding how to version software.
+
 ## The ideal workflow
 
 The contribution process works like this:
