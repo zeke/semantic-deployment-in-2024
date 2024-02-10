@@ -5,6 +5,9 @@ This is an opinionated workflow for automating away some of the tedium of releas
 The idea is to add a bit of semantic information to each pull request as your write them, then let automation take care of 
 writing changelogs, determining version numbers, and publishing release artifacts to registries like GitHub and npm.
 
+[![video](https://github.com/zeke/semantic-deployment-in-2024/assets/2289/f8b37a39-9793-4727-a7b3-dfe8ba7eb037)](https://youtu.be/SH89HqJl5Gk)
+
+🍿 [Watch the 5-minute demo video on YouTube](https://youtu.be/SH89HqJl5Gk)
 
 ## Why?
 
