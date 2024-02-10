@@ -1,35 +1,37 @@
 # Semantic Deployment, 2024 Edition
 
-This document describes an opinionated workflow for automating away some of the tedium of releasing versioned software.
+This is an opinionated workflow for automating away some of the tedium of releasing versioned software.
 
-The basic idea is to add a bit of semantic information to each pull request as your write them, then let automation take care of writing changelogs, determining version numbers, and publishing release artifacts to registries like GitHub and npm.
-
+The idea is to add a bit of semantic information to each pull request as your write them, then let automation take care of 
+writing changelogs, determining version numbers, and publishing release artifacts to registries like GitHub and npm.
 
 ## The ideal workflow
 
 The contribution process works like this:
 
 1. Contributors open pull requests, giving them titles with [semantic prefixes](https://www.conventionalcommits.org) like `fix:` and `feat:`.
-1. Every time you merge a pull request, it's automatically added to a long-running Release pull request.
-1. When you're ready to cut a release, you merge the Release pull request and a release is created.
+1. When you merge a pull request, it's automatically added to a long-running Release pull request that accumulates changes.
+1. When you're ready to cut a release, merge the Release pull request and a release is created automatically.
 
 That's it! You never think about version numbers again.
 
 ## Tools
+
+This workflow combines the following ideologies, specifications, and tools:
 
 - [Semantic Versioning](https://semver.org) (aka SemVer), a methodology for applying version numbers to software.
 - [Conventional Commits](https://www.conventionalcommits.org), a specification for adding human and machine readable meaning 
 to commit messages
 - [GitHub Actions](https://github.com/features/actions), a GitHub feature for automating your work.
 - [Release Please](https://github.com/googleapis/release-please), a tool that automates CHANGELOG generation, the creation of GitHub releases, and version bumps for your projects.
-- [Semantic Pull Request](https://github.com/amannn/action-semantic-pull-request), a GitHub action that validates PR titles are semantic.
+- [Semantic Pull Request](https://github.com/amannn/action-semantic-pull-request), a GitHub action that validates pull request titles have semantic prefixes.
 
-## Setting up your repository
+## Setting it up
 
 🐢🚀 This guide caters to a Node.js crowd, but you can use this setup for [dozens of languages](https://github.com/googleapis/release-please?tab=readme-ov-file#strategy-language-types-supported)
 
-1. Create a **Release** actions workflow that uses release-please. ([Example](https://github.com/replicate/create-replicate/blob/531e04e7a911eaa4f360e163d984777377707b72/.github/workflows/release.yml)).
-1. Create a **Semantic PR** actions workflow that lints your PR titles. ([Example](https://github.com/replicate/create-replicate/blob/531e04e7a911eaa4f360e163d984777377707b72/.github/workflows/semantic-pull-request.yml))
+1. Create a **Release** actions workflow that uses [release-please](https://github.com/google-github-actions/release-please-action). ([Example](https://github.com/replicate/create-replicate/blob/531e04e7a911eaa4f360e163d984777377707b72/.github/workflows/release.yml)).
+1. Create a **Semantic Pull Request** actions workflow that uses [semantic-pull-request](https://github.com/amannn/action-semantic-pull-request) to lint your pull request titles. ([Example](https://github.com/replicate/create-replicate/blob/531e04e7a911eaa4f360e163d984777377707b72/.github/workflows/semantic-pull-request.yml))
 1. Create a [GitHub Personal Access Token (PAT)](https://github.com/settings/tokens/new?scopes=repo,workflow) with _Repo_ and _Workflow_ scopes.
 1. Add the GitHub PAT to your repo as a [Repository Secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 1. Create an npm token.
