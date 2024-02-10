@@ -2,6 +2,8 @@
 
 This is an opinionated workflow for automating away some of the tedium of releasing versioned software.
 
+It combines [SemVer](https://semver.org), [Conventional Commits](https://www.conventionalcommits.org), [GitHub Actions](https://github.com/features/actions), [Release Please](https://github.com/googleapis/release-please), and [Semantic Pull Request](https://github.com/amannn/action-semantic-pull-request).
+
 The idea is to add a bit of semantic information to each pull request as your write them, then let automation take care of 
 writing changelogs, determining version numbers, and publishing release artifacts to registries like GitHub and npm.
 
